@@ -5,45 +5,37 @@
  *
  * Return: 0 on success
  */
-int main(void)
-{
-	char *line = NULL;
-	size_t len = 0;
+int main(void) {
+    char *ligne = NULL;
+    size_t len_n = 0;
 
-	while (1)
-	{
-		printf("#cisfun$ ");
-		if (getline(&line, &len, stdin) == -1)
-		{
-			printf("\n");
-			break; /* Handle EOF (Ctrl+D) */
-		}
+    while (1) {
+        printf("#cisfun$ ");
 
-		line[strlen(line) - 1] = '\0'; /* Remove newline character */
+        if (getline(&ligne, &len_n, stdin) == -1) {
+            printf("\n");
+            break; /* Handle EOF (Ctrl+D) */
+        }
 
-		pid_t pid = fork();
+        ligne[strlen(ligne) - 1] = '\0'; /* Remove newline character */
 
-		if (pid == -1)
-		{
-			perror("fork");
-			exit(EXIT_FAILURE);
-		}
-		else if (pid == 0)
-		{
-			/* Child process */
-			if (execlp(line, line, (char *)NULL) == -1)
-			{
-				perror("execlp");
-				exit(EXIT_FAILURE);
-			}
-		}
-		else
-		{
-			/* Parent process */
-			wait(NULL); /* Wait for child process to finish */
-		}
-	}
+        pid_t proc_id = fork();
 
-	free(line);
-	return (0);
+        if (proc_id == -1) {
+            perror("fork");
+            exit(EXIT_FAILURE);
+        } else if (proc_id == 0) {
+            /* Child process */
+            if (execve(ligne, (char *[]){ligne, NULL}, NULL) == -1) {
+                fprintf(stderr, "%s: No such file or directory\n", ligne);
+                exit(EXIT_FAILURE);
+            }
+        } else {
+            /* Parent process */
+            wait(NULL); /* Wait for child process to finish */
+        }
+    }
+
+    free(ligne);
+    return 0;
 }
