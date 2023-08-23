@@ -17,11 +17,23 @@ int main(void)
 		if (isatty(fileno(stdin)))
 			printf(":$ ");
 
-		ligne = read_line();
+		ligne = read_ligne();
+		if (!ligne)
+		{
+			perror("read_ligne error");
+			continue;
+		}
 		argmv = _parse(ligne);
+		if (!argmv)
+		{
+			free(ligne);
+			perror("_parse error");
+			continue;
+		}
 		sttus = cmd_handler(argmv);
-
 		free(ligne);
+		for (int i = 0; arguments[i] != NULL; i++)
+			free(arguments[i]);
 		free(argmv);
 	}
 	exit(EXIT_SUCCESS);
