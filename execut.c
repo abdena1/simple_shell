@@ -2,7 +2,7 @@
 /**
  * execut - execute non built-in parsed command
  * @parsed: 2d array holding parsed user input
- * designed to facilitate the execution of non-built-in commands parsed from user input
+ * designed to facilitate execution of non-built-in cmd parsed from user input
  * Return: 1 on success
  */
 int execut(char **parsed)
