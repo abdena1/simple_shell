@@ -1,9 +1,11 @@
 #include "shell.h"
 /**
- * main - loop of  simple shell
- * Return: 0 if  success.
+ * main - Entry point for the simple shell loop.
+ * This function is the central loop of the simple shell program.
+ * It manages user input, command parsing, execution, and output.
+ * The loop continues until the user exits the shell.
+ * Return: 0 on successful execution.
  */
-
 int main(void)
 {
 	char *ligne;
