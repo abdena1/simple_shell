@@ -1,18 +1,11 @@
 #include "shell.h"
 /**
-<<<<<<< HEAD
  * cmd_handler - compare commands with built-in list
  * commands and calls execut function if not found in built-ins list
  * @parse: 2 dim array holding user input
  *
  * Return: -1 if user put "exit"
  *      1 other else
-=======
- * cmd_handler - compares command with list of built-in
- * commands and calls execute function if command was not found in built-ins
- * @parsed: 2d array holding parsed user input
- * Return: -1 if user enters "exit", else returns 1
->>>>>>> 078e2fdb72d54835e231165e4f027c9980db4b44
 */
 int cmd_handler(char **parse)
 {
