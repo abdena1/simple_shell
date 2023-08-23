@@ -2,7 +2,7 @@
 
 ## 0. Betty would be proud : **betty task**
 
-## Simple shell 0.1 : a **simple shell task** 
+## Simple shell 0.1 : a **simple shell task**
 
 - Display a prompt and wait for the user to type a command. A command line always ends with a new line.
 * The prompt is displayed again each time a command has been executed.
