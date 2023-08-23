@@ -1,20 +1,15 @@
 #include "shell.h"
 /**
-<<<<<<< HEAD
- * execut - execute non built-in command parsed
- * @parse: 2 dim array taking user input parse
- * Return: 1 if success
-=======
- * execut - execute non built-in parsed command
- * @parsed: 2d array holding parsed user input
- * designed to facilitate execution of non-built-in cmd parsed from user input
- * Return: 1 on success
->>>>>>> 078e2fdb72d54835e231165e4f027c9980db4b44
+ * execut - Execute non-built-in command.
+ * @parse: 2D array holding parsed user input.
+ * This func is designed to exec non-built-in cmds parsed from user input.
+ * It takes a 2-dimensional array called @parse as its param, which contains
+ * the parsed components of the user's input command.
+ * Return: 1 on success.
  */
 int execut(char **parse)
 {
 	pid_t child_pid = fork();
-
 		if (child_pid == 0)
 		{
 			if (execvp(parse[0], parse) == -1)
