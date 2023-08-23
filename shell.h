@@ -29,13 +29,13 @@
 
 /*integer*/
 
-int execution(char **parsed);
-int cmdHandler(char **parsed);
+int execut(char **parsed);
+int cmd_handler(char **parsed);
 
 /*char*/
 
-char **parse(char *str);
-char *readLine(void);
+char **_parse(char *str);
+char *read_line(void);
 
 extern char **environ;
 
