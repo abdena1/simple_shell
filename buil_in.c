@@ -3,7 +3,6 @@
  * cmd_handler - compares command with list of built-in
  * commands and calls execute function if command was not found in built-ins
  * @parsed: 2d array holding parsed user input
- *
  * Return: -1 if user enters "exit", else returns 1
 */
 int cmd_handler(char **parsed)
