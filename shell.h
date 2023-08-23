@@ -1,15 +1,26 @@
 #ifndef SHELL_H
 #define SHELL_H
-#define _GNU_SOURCE
 
+#define TOK_BUFSIZE 64
+#define TOK_DELIM " \n\t\r"
+
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/stat.h>
-#include <errno.h>
 
+#define BUFFER 1024
 
-#endif /* SHELL_H */
+#define MAXTOK 64
+
+#define EXIT "exit\n"
+
+char **parse(char *str);
+char *readLine(void);
+extern char **environ;
+int execution(char **parsed);
+int cmdHandler(char **parsed);
+
+#endif
