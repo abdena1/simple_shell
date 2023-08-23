@@ -1,35 +1,36 @@
 #include "shell.h"
 /**
- * cmd_handler - compares command with list of built-in
- * commands and calls execute function if command was not found in built-ins
- * @parsed: 2d array holding parsed user input
+ * cmd_handler - compare commands with built-in list
+ * commands and calls execut function if not found in built-ins list
+ * @parse: 2 dim array holding user input
  *
- * Return: -1 if user enters "exit", else returns 1
+ * Return: -1 if user put "exit"
+ *      1 other else
 */
-int cmd_handler(char **parsed)
+int cmd_handler(char **parse)
 {
+	int switch_arg = 0, sttus = 0, n;
 	char **env = environ;
-	int switchArg = 0, status = 0, i;
-	char *cmdList[3];
+	char *cmd_list[3];
 
-	cmdList[0] = "exit";
-	cmdList[1] = "cd";
-	cmdList[2] = "env";
-	for (i = 0; i < 3; i++)
+	cmd_list[0] = "exit";
+	cmd_list[1] = "cd";
+	cmd_list[2] = "env";
+	for (n = 0; n < 3; n++)
 	{
-		if (strcmp(parsed[0], cmdList[i]) == 0)
-			switchArg = i + 1;
+		if (strcmp(parse[0], cmd_list[n]) == 0)
+			switch_arg = n + 1;
 	}
-	switch (switchArg)
+	switch (switch_arg)
 	{
 		case 1:
 			return (-1);
 		case 2:
-			if (parsed[1] == NULL)
+			if (parse[1] == NULL)
 				perror("too few arguments");
 			else
 			{
-				if (chdir(parsed[1]) != 0)
+				if (chdir(parse[1]) != 0)
 					perror("hsh");
 			}
 			return (1);
@@ -41,8 +42,8 @@ int cmd_handler(char **parsed)
 			}
 			return (1);
 		default:
-			status = execut(parsed);
-			return (status);
+		sttus = execut(parse);
+		return (sttus);
 	}
 	return (0);
 }

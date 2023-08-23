@@ -29,8 +29,8 @@
 
 /*integer*/
 
-int execut(char **parsed);
-int cmd_handler(char **parsed);
+int execut(char **parse);
+int cmd_handler(char **parse);
 
 /*char*/
 
